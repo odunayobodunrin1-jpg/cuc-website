@@ -142,17 +142,50 @@ h3 { font-size: 1.55rem; }
   cursor: pointer;
 }
 
+.dev-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1.5px solid var(--gold);
+  border-radius: 999px;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.dev-btn:hover { background: var(--gold); color: var(--navy-dark); transform: translateY(-2px); }
+
+.site-footer .dev-btn:hover,
+.site-footer .dev-btn:focus-visible {
+  background: var(--gold);
+  color: #000;            /* black text on the gold button */
+  transform: translateY(-2px);
+}
+
+  .site-footer .dev-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1.5px solid var(--gold);
+  border-radius: 999px;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
 .brand-logo {
-  height: 60px;
-  width: 60px;          /* same as height, so it's a perfect circle */
-  object-fit: cover;    /* fills the circle without stretching the picture */
-  border-radius: 100%;   /* the circular mask */
-  border: 2px solid var(--gold);  /* optional gold ring; delete this line if you don't want it */
-  body.is-scrolled .brand-logo { width: 38px; }
-  @media (max-width: 520px) {
-  .brand-logo { height: 34px; width: 34px; }
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;        /* fills the circle with no stretching */
+  object-position: center;  /* keeps the logo centered */
+  background: var(--navy);  /* same colour as the logo, so no white edges show */
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
 }
-}
+body.is-scrolled .brand-logo { width: 38px; }
+@media (max-width: 520px) { .brand-logo { width: 34px; height: 34px; } }
 
 /* ---------- Hero ---------- */
 .hero {
