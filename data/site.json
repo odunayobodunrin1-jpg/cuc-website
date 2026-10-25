@@ -65,14 +65,6 @@
       ]
     },
     {
-      "title": "Midweek Prayer Service",
-      "schedule": "Wednesdays · 12:30 PM",
-      "summary": "A short mid-day service to pause, pray, and be refreshed between classes.",
-      "details": [
-        "Replace this with a fuller description of the midweek prayer service."
-      ]
-    },
-    {
       "title": "Fellowship Meetings",
       "schedule": "Weekly · Times vary by fellowship",
       "summary": "Small communities for friendship, Bible study, and growth.",
@@ -117,8 +109,8 @@
     ],
     "notes": [
       "After giving, you may send a short message to the chapel office so your gift can be acknowledged.",
-      "Please confirm the account name before you send any money.",
-      "For questions about giving, use the Contact page."
+      "For questions about giving, use the Contact page.",
+      "Please confirm the account name before you send any money."
     ]
   },
   "gallery": [
@@ -126,61 +118,6 @@
       "image": "images/uploads/saveclip.app_587763896_17852180724592871_1832134166830200064_n.jpg",
       "title": "Sunday Worship",
       "description": "Hearts lifted together in praise and the Word."
-    },
-    {
-      "image": "images/gallery/gallery-2.jpg",
-      "title": "Campus Fellowship",
-      "description": "Friday evenings of prayer, worship, and community."
-    },
-    {
-      "image": "images/gallery/gallery-3.jpg",
-      "title": "Community Outreach",
-      "description": "Serving our host community with the love of Christ."
-    },
-    {
-      "image": "images/gallery/gallery-4.jpg",
-      "title": "Voices of Grace",
-      "description": "The chapel choir leading us into God's presence."
-    },
-    {
-      "image": "images/gallery/gallery-5.jpg",
-      "title": "Welcome Service",
-      "description": "Welcoming our new students into the CUC family."
-    },
-    {
-      "image": "images/gallery/gallery-6.jpg",
-      "title": "Praise Night",
-      "description": "An evening of music, dance and thanksgiving."
-    },
-    {
-      "image": "images/gallery/gallery-7.jpg",
-      "title": "Midweek Prayer",
-      "description": "Pausing between classes to pray together."
-    },
-    {
-      "image": "images/gallery/gallery-8.jpg",
-      "title": "Bible Study",
-      "description": "Opening the Word and growing in understanding."
-    },
-    {
-      "image": "images/gallery/gallery-9.jpg",
-      "title": "Unit Training",
-      "description": "Preparing our units to serve with excellence."
-    },
-    {
-      "image": "images/gallery/gallery-10.jpg",
-      "title": "Fellowship Retreat",
-      "description": "Time away to rest, bond and seek God."
-    },
-    {
-      "image": "images/gallery/gallery-11.jpg",
-      "title": "Student Leaders",
-      "description": "The students who serve and lead the chapel community."
-    },
-    {
-      "image": "images/gallery/gallery-12.jpg",
-      "title": "Worship Night",
-      "description": "Lifting our voices together as one family."
     }
   ],
   "news": [
