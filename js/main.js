@@ -191,7 +191,7 @@ function renderFooter(chapel) {
         </div>
       </div>
       <div class="container footer-bottom">&copy; ${new Date().getFullYear()} ${esc(chapel.name)}. All rights reserved.</div>
-      <div class="container footer-bottom"><a class="dev-btn" href="https://wa.me/2349014726779?text=Hello%20Odunayo%2C%20I%20saw%20your%20work%20on%20the%20CUC%20website%20and%20I%20must%20commend%20you%20for%20the%20great%20job.%20I%20would%20love%20to%20have%20you%20build%20a%20similar%20website%20for%20me." target="_blank" rel="noopener">Developed by Odunayo Bodunrin</a></div>s
+      <div class="container footer-bottom"><a class="dev-btn" href="https://wa.me/2349014726779?text=Hello%20Odunayo%2C%20I%20saw%20your%20work%20on%20the%20CUC%20website%20and%20I%20must%20commend%20you%20for%20the%20great%20job.%20I%20would%20love%20to%20have%20you%20build%20a%20similar%20website%20for%20me." target="_blank" rel="noopener">Developed by Odunayo Bodunrin</a></div>
       </footer>`;
 }
 
