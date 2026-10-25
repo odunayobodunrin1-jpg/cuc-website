@@ -1,96 +1,8 @@
 {
-  "chapel": {
-    "name": "Chrisland University Chapel",
-    "short": "CUC",
-    "logo": "images/cuc.jpg",
-    "tagline": "Raising Godly morals and instilling christian virtues.",
-    "address": "Chrisland University, Km 5, Ajebo Road, Owode, near Federal Medical Centre, Abeokuta, Ogun State, Nigeria.",
-    "email": "chapel@chrislanduniversity.edu",
-    "phone": "+2348036063523"
-  },
-  "banners": {
-    "_readme": "Picture banner at the top of each page. Change the picture path to use your own photo (a wide landscape picture works best). Delete a line to give that page a plain banner. Student Leaders and Gallery are left out on purpose.",
-    "fellowship": "images/banners/fellowship.jpg",
-    "units": "images/banners/units.jpg",
-    "events": "images/banners/events.jpg",
-    "contact": "images/banners/contact.jpg",
-    "give": "images/banners/give.jpg"
-  },
-  "hero": {
-    "interval": 6500,
-    "slides": [
-      {
-        "image": "images/banner.png",
-        "eyebrow": "Welcome to",
-        "title": "Chrisland University Chapel",
-        "text": "Raising Godly morals and instilling christian virtues."
-      },
-      {
-        "image": "images/banner2.jpg",
-        "eyebrow": "Worship with us",
-        "title": "A Home for Worship",
-        "text": "Come as you are and meet God in song, prayer, and the Word."
-      },
-      {
-        "image": "images/banner3.jpg",
-        "eyebrow": "Find your place",
-        "title": "Join a Fellowship",
-        "text": "Small communities for friendship, Bible study, and growth."
-      },
-      {
-        "image": "images/banner4.jpg",
-        "eyebrow": "Serve with us",
-        "title": "Church Units & Outreach",
-        "text": "Use your gifts to serve the chapel and our host community."
-      }
-    ]
-  },
-  "stats": [
-    {
-      "value": "10",
-      "label": "Fellowships"
-    },
-    {
-      "value": "12",
-      "label": "Church Units"
-    },
-    {
-      "value": "4",
-      "label": "Monthly Services"
-    }
-  ],
-  "chaplain": {
-    "name": "Rev. Canon Oluwajuwonlo Onasanya",
-    "title": "University Chaplain",
-    "bio": "An Anglican Priest, University Administrator, Public Health Specialist and Lecturer with years of experience in higher education, pastoral ministry, health promotion, and community development.",
-    "biography": [
-      "Rev. Canon Oluwajuwonlo Onasanya, is an Anglican Priest, a University Administrator, Public Health Specialist and a Lecturer with years of experience in higher education, pastoral ministry, health promotion, and community development, actively involved in Christian ministry, hosting conferences, growth meetings, and spiritual care programs.",
-      "He currently serves as the University Chaplain at Chrisland University, Abeokuta, where he leads an interdenominational Christian community focused on raising godly morals and instilling spiritual values. There, he provides strategic leadership in student development, counselling, ethical formation, and chaplaincy services.",
-      "Rev. Canon Onasanya holds a Bachelor of Science Degree in Microbiology from Bowen University, Master of Public Health Degree in Health Promotion and Education from Babcock University and a Master of Divinity from the Crowther Graduate Theological Seminary.",
-      "He lectures at various Higher Institutions of Learning, a researcher and passionate advocate for holistic wellbeing. His interests span public health promotion, leadership development, faith-based interventions, and student mentorship.",
-      "Beyond his ministerial calling, he is a public speaker, a public health practitioner, specializing in Health Promotion and Education and committed to integrating academic excellence, public health practice, and transformational leadership to foster healthier communities and ethically grounded institutions."
-    ],
-    "photo": "images/chaplain.jpg"
-  },
-  "overview": {
-    "heading": "About the Chapel",
-    "intro": "Chrisland University Chapel is the spiritual heart of campus: a community where faith and academic excellence grow together. The intensification of Worship is an inner Godward experience of the heart and the act of serving God is a consistent expression of allegiance to Him”. This is our tradition here at Chrisland University Chapel (CUC) when we come together as one family in God at our spiritual community in electrifying moments of intense worship; sharing the undiluted word of God; fervent prayers and refreshing programmes.The intensification of Worship is an inner Godward experience of the heart and the act of serving God is a consistent expression of allegiance to Him”. This is our tradition here at Chrisland University Chapel (CUC) when we come together as one family in God at our spiritual community in electrifying moments of intense worship; sharing the undiluted word of God; fervent prayers and refreshing programmes.",
-    "pillars": [
-      {
-        "title": "Our Role",
-        "text": "Nurturing the spiritual life of students, staff, and faculty through worship, teaching, and pastoral care."
-      },
-      {
-        "title": "Our Impact",
-        "text": "Shaping character, building lasting friendships, and sending graduates into the world with purpose."
-      },
-      {
-        "title": "Our Programs",
-        "text": "Weekly services, fellowships, church units, outreach, counselling, and special events through the year.",
-        "link": "events.html#programs",
-        "linkLabel": "See programs & upcoming events"
-      }
-    ]
+  "contact": {
+    "formEndpoint": "",
+    "mapQuery": "Chrisland University, Km 5 Ajebo Road, Owode, Abeokuta, Ogun State, Nigeria",
+    "hours": []
   },
   "belonging": {
     "heading": "Belonging, Purpose & Growth",
@@ -113,8 +25,29 @@
       "by": "Rev. Canon Oluwajuwonlo Onasanya, University Chaplain"
     }
   },
+  "banners": {
+    "_readme": "Picture banner at the top of each page. Change the picture path to use your own photo (a wide landscape picture works best). Delete a line to give that page a plain banner. Student Leaders and Gallery are left out on purpose.",
+    "fellowship": "images/banners/fellowship.jpg",
+    "units": "images/banners/units.jpg",
+    "events": "images/banners/events.jpg",
+    "contact": "images/banners/contact.jpg",
+    "give": "images/banners/give.jpg"
+  },
   "vision": "To become a world –class university renowned for intellectual freedom, ethical standards, research, community service and the outstanding training of a new generation of leaders",
   "mission": "To create a learning environment that nurtures a sound moral and intellectual culture that attracts an excellent blend of faculty from across the world and deploys resources to educate the total person’s.",
+  "chaplain": {
+    "name": "Rev. Canon Oluwajuwonlo Onasanya",
+    "title": "University Chaplain",
+    "bio": "An Anglican Priest, University Administrator, Public Health Specialist and Lecturer with years of experience in higher education, pastoral ministry, health promotion, and community development.",
+    "biography": [
+      "Rev. Canon Oluwajuwonlo Onasanya, is an Anglican Priest, a University Administrator, Public Health Specialist and a Lecturer with years of experience in higher education, pastoral ministry, health promotion, and community development, actively involved in Christian ministry, hosting conferences, growth meetings, and spiritual care programs.",
+      "He currently serves as the University Chaplain at Chrisland University, Abeokuta, where he leads an interdenominational Christian community focused on raising godly morals and instilling spiritual values. There, he provides strategic leadership in student development, counselling, ethical formation, and chaplaincy services.",
+      "Rev. Canon Onasanya holds a Bachelor of Science Degree in Microbiology from Bowen University, Master of Public Health Degree in Health Promotion and Education from Babcock University and a Master of Divinity from the Crowther Graduate Theological Seminary.",
+      "He lectures at various Higher Institutions of Learning, a researcher and passionate advocate for holistic wellbeing. His interests span public health promotion, leadership development, faith-based interventions, and student mentorship.",
+      "Beyond his ministerial calling, he is a public speaker, a public health practitioner, specializing in Health Promotion and Education and committed to integrating academic excellence, public health practice, and transformational leadership to foster healthier communities and ethically grounded institutions."
+    ],
+    "photo": "images/chaplain.jpg"
+  },
   "programs": [
     {
       "title": "Sunday Worship Service",
@@ -156,70 +89,41 @@
       ]
     }
   ],
-  "events": [
-    {
-      "date": "2026-10-18",
-      "time": "10:00 AM",
-      "venue": "University Chapel",
-      "title": "Welcome Service for New Students",
-      "summary": "We welcome our new students into the CUC family with worship, prayer, and fellowship.",
-      "image": "images/events/event-1.jpg",
-      "details": [
-        "Replace this with the full details of the event: the programme, guest speakers, and what to bring.",
-        "All students, staff, and visitors are welcome."
-      ]
+  "give": {
+    "_readme": "EDIT the Give page here. verse = the Bible verse at the top. accounts = one block per bank account (copy a block to add one, delete a block to remove one). Replace every 0000000000 and Bank Name with the real details.",
+    "verse": {
+      "text": "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver.",
+      "reference": "2 Corinthians 9:7",
+      "version": "KJV"
     },
-    {
-      "date": "2026-10-25",
-      "time": "4:00 PM",
-      "venue": "Chapel Foyer",
-      "title": "Fellowship Registration Day",
-      "summary": "Find your place. Register for a fellowship and meet people who share your faith and calling.",
-      "image": "images/events/event-2.jpg",
-      "details": [
-        "Replace this with registration details and the list of fellowships."
-      ]
-    },
-    {
-      "date": "2026-11-02",
-      "time": "9:00 AM",
-      "venue": "Host Community",
-      "title": "Community Outreach Day",
-      "summary": "A day of service in our host community. Volunteers are welcome from every unit.",
-      "image": "images/events/event-3.jpg",
-      "details": [
-        "Replace this with outreach details: meeting point, activities, and how to sign up."
-      ]
-    }
-  ],
-  "news": [
-    {
-      "date": "2026-10-18",
-      "title": "Welcome Service for New Students",
-      "summary": "Join us as we welcome our new students into the CUC family with worship, prayer, and fellowship.",
-      "link": "events.html#upcoming"
-    },
-    {
-      "date": "2026-10-25",
-      "title": "Fellowship Registration Now Open",
-      "summary": "Find your place. Register for a fellowship and meet people who share your faith and calling.",
-      "link": "fellowship.html"
-    },
-    {
-      "date": "2026-11-02",
-      "title": "Community Outreach Day",
-      "summary": "A day of service in our host community. Volunteers are welcome from every unit.",
-      "link": "events.html#upcoming"
-    }
-  ],
-  "contact": {
-    "formEndpoint": "",
-    "mapQuery": "Chrisland University, Km 5 Ajebo Road, Owode, Abeokuta, Ogun State, Nigeria",
-    "hours": []
+    "eyebrow": "Give with a cheerful heart",
+    "heading": "Our Bank Details",
+    "intro": "Your giving supports worship, outreach, welfare and the work of the chapel. Thank you for sowing into God's work.",
+    "accounts": [
+      {
+        "purpose": "Tithes & Offerings",
+        "bankName": "Bank Name",
+        "accountName": "Chrisland University Chapel",
+        "accountNumber": "0000000000",
+        "note": "Use your name and \"Offering\" or \"Tithe\" as the payment narration."
+      },
+      {
+        "purpose": "Projects & Outreach",
+        "bankName": "Bank Name",
+        "accountName": "Chrisland University Chapel",
+        "accountNumber": "0000000000",
+        "note": "Use \"Project\" or \"Outreach\" as the payment narration."
+      }
+    ],
+    "notes": [
+      "After giving, you may send a short message to the chapel office so your gift can be acknowledged.",
+      "Please confirm the account name before you send any money.",
+      "For questions about giving, use the Contact page."
+    ]
   },
   "gallery": [
     {
-      "image": "images/gallery/gallery-1.jpg",
+      "image": "images/uploads/saveclip.app_587763896_17852180724592871_1832134166830200064_n.jpg",
       "title": "Sunday Worship",
       "description": "Hearts lifted together in praise and the Word."
     },
@@ -279,36 +183,132 @@
       "description": "Lifting our voices together as one family."
     }
   ],
-  "give": {
-    "_readme": "EDIT the Give page here. verse = the Bible verse at the top. accounts = one block per bank account (copy a block to add one, delete a block to remove one). Replace every 0000000000 and Bank Name with the real details.",
-    "verse": {
-      "text": "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver.",
-      "reference": "2 Corinthians 9:7",
-      "version": "KJV"
+  "news": [
+    {
+      "date": "2026-10-18",
+      "title": "Welcome Service for New Students",
+      "summary": "Join us as we welcome our new students into the CUC family with worship, prayer, and fellowship.",
+      "link": "events.html#upcoming"
     },
-    "eyebrow": "Give with a cheerful heart",
-    "heading": "Our Bank Details",
-    "intro": "Your giving supports worship, outreach, welfare and the work of the chapel. Thank you for sowing into God's work.",
-    "accounts": [
+    {
+      "date": "2026-10-25",
+      "title": "Fellowship Registration Now Open",
+      "summary": "Find your place. Register for a fellowship and meet people who share your faith and calling.",
+      "link": "fellowship.html"
+    },
+    {
+      "date": "2026-11-02",
+      "title": "Community Outreach Day",
+      "summary": "A day of service in our host community. Volunteers are welcome from every unit.",
+      "link": "events.html#upcoming"
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-10-18",
+      "time": "10:00 AM",
+      "venue": "University Chapel",
+      "title": "Welcome Service for New Students",
+      "summary": "We welcome our new students into the CUC family with worship, prayer, and fellowship.",
+      "image": "images/events/event-1.jpg",
+      "details": [
+        "Replace this with the full details of the event: the programme, guest speakers, and what to bring.",
+        "All students, staff, and visitors are welcome."
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "time": "4:00 PM",
+      "venue": "Chapel Foyer",
+      "title": "Fellowship Registration Day",
+      "summary": "Find your place. Register for a fellowship and meet people who share your faith and calling.",
+      "image": "images/events/event-2.jpg",
+      "details": [
+        "Replace this with registration details and the list of fellowships."
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "time": "9:00 AM",
+      "venue": "Host Community",
+      "title": "Community Outreach Day",
+      "summary": "A day of service in our host community. Volunteers are welcome from every unit.",
+      "image": "images/events/event-3.jpg",
+      "details": [
+        "Replace this with outreach details: meeting point, activities, and how to sign up."
+      ]
+    }
+  ],
+  "overview": {
+    "heading": "About the Chapel",
+    "intro": "Chrisland University Chapel is the spiritual heart of campus: a community where faith and academic excellence grow together. The intensification of Worship is an inner Godward experience of the heart and the act of serving God is a consistent expression of allegiance to Him”. This is our tradition here at Chrisland University Chapel (CUC) when we come together as one family in God at our spiritual community in electrifying moments of intense worship; sharing the undiluted word of God; fervent prayers and refreshing programmes.The intensification of Worship is an inner Godward experience of the heart and the act of serving God is a consistent expression of allegiance to Him”. This is our tradition here at Chrisland University Chapel (CUC) when we come together as one family in God at our spiritual community in electrifying moments of intense worship; sharing the undiluted word of God; fervent prayers and refreshing programmes.",
+    "pillars": [
       {
-        "purpose": "Tithes & Offerings",
-        "bankName": "Bank Name",
-        "accountName": "Chrisland University Chapel",
-        "accountNumber": "0000000000",
-        "note": "Use your name and \"Offering\" or \"Tithe\" as the payment narration."
+        "title": "Our Role",
+        "text": "Nurturing the spiritual life of students, staff, and faculty through worship, teaching, and pastoral care."
       },
       {
-        "purpose": "Projects & Outreach",
-        "bankName": "Bank Name",
-        "accountName": "Chrisland University Chapel",
-        "accountNumber": "0000000000",
-        "note": "Use \"Project\" or \"Outreach\" as the payment narration."
+        "title": "Our Impact",
+        "text": "Shaping character, building lasting friendships, and sending graduates into the world with purpose."
+      },
+      {
+        "title": "Our Programs",
+        "text": "Weekly services, fellowships, church units, outreach, counselling, and special events through the year.",
+        "link": "events.html#programs",
+        "linkLabel": "See programs & upcoming events"
       }
-    ],
-    "notes": [
-      "After giving, you may send a short message to the chapel office so your gift can be acknowledged.",
-      "Please confirm the account name before you send any money.",
-      "For questions about giving, use the Contact page."
     ]
-  }
+  },
+  "hero": {
+    "interval": 6500,
+    "slides": [
+      {
+        "image": "images/banner.png",
+        "eyebrow": "Welcome to",
+        "title": "Chrisland University Chapel",
+        "text": "Raising Godly morals and instilling christian virtues."
+      },
+      {
+        "image": "images/banner2.jpg",
+        "eyebrow": "Worship with us",
+        "title": "A Home for Worship",
+        "text": "Come as you are and meet God in song, prayer, and the Word."
+      },
+      {
+        "image": "images/banner3.jpg",
+        "eyebrow": "Find your place",
+        "title": "Join a Fellowship",
+        "text": "Small communities for friendship, Bible study, and growth."
+      },
+      {
+        "image": "images/banner4.jpg",
+        "eyebrow": "Serve with us",
+        "title": "Church Units & Outreach",
+        "text": "Use your gifts to serve the chapel and our host community."
+      }
+    ]
+  },
+  "chapel": {
+    "name": "Chrisland University Chapel",
+    "short": "CUC",
+    "logo": "images/cuc.jpg",
+    "tagline": "Raising Godly morals and instilling christian virtues.",
+    "address": "Chrisland University, Km 5, Ajebo Road, Owode, near Federal Medical Centre, Abeokuta, Ogun State, Nigeria.",
+    "email": "chapel@chrislanduniversity.edu",
+    "phone": "+2348036063523"
+  },
+  "stats": [
+    {
+      "value": "10",
+      "label": "Fellowships"
+    },
+    {
+      "value": "12",
+      "label": "Church Units"
+    },
+    {
+      "value": "4",
+      "label": "Monthly Services"
+    }
+  ]
 }
