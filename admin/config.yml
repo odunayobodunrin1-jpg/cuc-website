@@ -1,0 +1,319 @@
+# ==========================================================
+# CUC dashboard settings (Decap CMS)
+# Open the dashboard at:  https://cuc-chapel.netlify.app/admin/
+# ONLY change the "repo" line below (your GitHub username/repository).
+# ==========================================================
+backend:
+  name: github
+  repo: odunayobodun1-jpg/cuc-website
+  branch: main
+
+publish_mode: simple
+site_url: https://cuc-chapel.netlify.app
+display_url: https://cuc-chapel.netlify.app
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+# Reusable bits
+# (pictures: pick one from your computer; it is saved in images/uploads)
+
+collections:
+
+  # ------------------------------------------------------
+  - name: "pages"
+    label: "Website Pages"
+    files:
+      - name: "site"
+        label: "Home, Events, Gallery, Contact & Give"
+        file: "data/site.json"
+        format: "json"
+        fields:
+          - label: "Chapel name, logo & contacts (header, footer)"
+            name: "chapel"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Chapel name", name: "name", widget: "string" }
+              - { label: "Short name", name: "short", widget: "string", required: false }
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Address", name: "address", widget: "text" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+
+          - label: "Page banner pictures (Fellowship, Units, Events, Contact, Give)"
+            name: "banners"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Fellowship page", name: "fellowship", widget: "image", required: false }
+              - { label: "Units page", name: "units", widget: "image", required: false }
+              - { label: "Events page", name: "events", widget: "image", required: false }
+              - { label: "Contact page", name: "contact", widget: "image", required: false }
+              - { label: "Give page", name: "give", widget: "image", required: false }
+
+          - label: "HOME: Rotating banner"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Seconds between slides (in milliseconds, e.g. 6500)", name: "interval", widget: "number", value_type: "int", min: 3000 }
+              - label: "Slides"
+                name: "slides"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Picture", name: "image", widget: "image", required: false }
+                  - { label: "Small heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Big title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text", required: false }
+
+          - label: "HOME: Numbers (Fellowships, Units, Services)"
+            name: "stats"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.value}} {{fields.label}}"
+            fields:
+              - { label: "Number", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+          - label: "HOME: Chaplain"
+            name: "chaplain"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - { label: "Short intro (on the card)", name: "bio", widget: "text" }
+              - label: "Full biography (one box per paragraph)"
+                name: "biography"
+                widget: "list"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+
+          - label: "HOME: About the chapel"
+            name: "overview"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Introduction", name: "intro", widget: "text" }
+              - label: "Three boxes (Role, Impact, Programs)"
+                name: "pillars"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Link (optional, e.g. events.html#programs)", name: "link", widget: "string", required: false }
+                  - { label: "Link words (optional)", name: "linkLabel", widget: "string", required: false }
+
+          - label: "HOME: Belonging, Purpose & Growth, and Chaplain's closing word"
+            name: "belonging"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+              - label: "Closing word"
+                name: "conclusion"
+                widget: "object"
+                fields:
+                  - { label: "Message", name: "quote", widget: "text" }
+                  - { label: "Signed by", name: "by", widget: "string" }
+
+          - { label: "HOME: Vision", name: "vision", widget: "text" }
+          - { label: "HOME: Mission", name: "mission", widget: "text" }
+
+          - label: "HOME: News & announcements"
+            name: "news"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.date}} {{fields.title}}"
+            fields:
+              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Link (e.g. events.html#upcoming)", name: "link", widget: "string", required: false }
+
+          - label: "EVENTS: Programs (weekly services etc.)"
+            name: "programs"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Schedule (e.g. Sundays · 9:00 AM)", name: "schedule", widget: "string" }
+              - { label: "Short summary", name: "summary", widget: "text" }
+              - label: "Details (one box per line / paragraph)"
+                name: "details"
+                widget: "list"
+                required: false
+                field: { label: "Line", name: "line", widget: "text" }
+
+          - label: "EVENTS: Upcoming events (past dates hide by themselves)"
+            name: "events"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.date}} {{fields.title}}"
+            fields:
+              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "Time (e.g. 10:00 AM)", name: "time", widget: "string", required: false }
+              - { label: "Venue", name: "venue", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Short summary", name: "summary", widget: "text" }
+              - { label: "Picture", name: "image", widget: "image", required: false }
+              - label: "Full details (one box per paragraph)"
+                name: "details"
+                widget: "list"
+                required: false
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+
+          - label: "GALLERY: Photos"
+            name: "gallery"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Picture", name: "image", widget: "image" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+
+          - label: "CONTACT: Form, map and office hours"
+            name: "contact"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Form link (Formspree, optional)", name: "formEndpoint", widget: "string", required: false }
+              - { label: "Map search (place name or address)", name: "mapQuery", widget: "string", required: false }
+              - label: "Office hours"
+                name: "hours"
+                widget: "list"
+                required: false
+                summary: "{{fields.day}}"
+                fields:
+                  - { label: "Day(s)", name: "day", widget: "string" }
+                  - { label: "Time", name: "time", widget: "string" }
+
+          - label: "GIVE: Bible verse, bank details and notes"
+            name: "give"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Bible verse"
+                name: "verse"
+                widget: "object"
+                fields:
+                  - { label: "Verse text", name: "text", widget: "text" }
+                  - { label: "Reference (e.g. 2 Corinthians 9:7)", name: "reference", widget: "string" }
+                  - { label: "Bible version (e.g. KJV)", name: "version", widget: "string", required: false }
+              - { label: "Small heading", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Introduction", name: "intro", widget: "text", required: false }
+              - label: "Bank accounts (add as many as you need)"
+                name: "accounts"
+                widget: "list"
+                summary: "{{fields.purpose}}: {{fields.bankName}}"
+                fields:
+                  - { label: "What it is for (e.g. Tithes & Offerings)", name: "purpose", widget: "string" }
+                  - { label: "Bank name", name: "bankName", widget: "string" }
+                  - { label: "Account name", name: "accountName", widget: "string" }
+                  - { label: "Account number", name: "accountNumber", widget: "string" }
+                  - { label: "Note (optional)", name: "note", widget: "text", required: false }
+              - label: "Notes under the bank details"
+                name: "notes"
+                widget: "list"
+                required: false
+                field: { label: "Note", name: "note", widget: "text" }
+
+  # ------------------------------------------------------
+  - name: "people"
+    label: "People (Leaders, Fellowships, Units)"
+    files:
+      - name: "leaders"
+        label: "Student Leaders page"
+        file: "data/leaders.json"
+        format: "json"
+        fields:
+          - label: "Leaders (cards appear in this order)"
+            name: "leaders"
+            widget: "list"
+            summary: "{{fields.name}}: {{fields.post}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Post held", name: "post", widget: "string" }
+              - { label: "Picture", name: "photo", widget: "image", required: false }
+              - { label: "Duties (leave a blank line between paragraphs)", name: "duty", widget: "text", required: false }
+
+      - name: "fellowships"
+        label: "Fellowship page (10 fellowships)"
+        file: "data/fellowships.json"
+        format: "json"
+        fields:
+          - label: "Fellowships"
+            name: "fellowships"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Fellowship name", name: "name", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string", required: false }
+              - { label: "When it meets", name: "meets", widget: "string", required: false }
+              - label: "Leader"
+                name: "leader"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Picture", name: "photo", widget: "image", required: false }
+                  - { label: "Phone", name: "phone", widget: "string", required: false }
+                  - { label: "WhatsApp (digits only, e.g. 2348012345678 or 08012345678)", name: "whatsapp", widget: "string", required: false }
+                  - { label: "Email", name: "email", widget: "string", required: false }
+                  - { label: "About / bio", name: "bio", widget: "text", required: false }
+
+      - name: "units"
+        label: "Units page (12 units)"
+        file: "data/units.json"
+        format: "json"
+        fields:
+          - label: "Units"
+            name: "units"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Unit name", name: "name", widget: "string" }
+              - { label: "Unit picture", name: "image", widget: "image", required: false }
+              - { label: "What the unit is about", name: "intro", widget: "text" }
+              - label: "Duties (one box per duty)"
+                name: "duties"
+                widget: "list"
+                required: false
+                field: { label: "Duty", name: "duty", widget: "string" }
+              - label: "Leader"
+                name: "leader"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Picture", name: "photo", widget: "image", required: false }
+                  - { label: "Phone", name: "phone", widget: "string", required: false }
+                  - { label: "WhatsApp (digits only, e.g. 2348012345678)", name: "whatsapp", widget: "string", required: false }
+                  - { label: "Email", name: "email", widget: "string", required: false }
+                  - { label: "About / bio", name: "bio", widget: "text", required: false }
+              - label: "Assistant (leave the name EMPTY if this unit has no assistant)"
+                name: "assistant"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Name", name: "name", widget: "string", required: false }
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Picture", name: "photo", widget: "image", required: false }
+                  - { label: "Phone", name: "phone", widget: "string", required: false }
+                  - { label: "WhatsApp (digits only)", name: "whatsapp", widget: "string", required: false }
+                  - { label: "Email", name: "email", widget: "string", required: false }
+                  - { label: "About / bio", name: "bio", widget: "text", required: false }
