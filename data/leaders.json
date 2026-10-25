@@ -1,0 +1,29 @@
+{
+  "_readme": "EDIT THIS FILE to change the Student Leaders page. Each leader is one block between { }. Copy a block to add a leader, delete a block to remove one. The cards appear in the same order as this list. photo = path to the picture inside the images folder (put pictures in images/leaders/). If a picture is missing, the leader's initials show instead.",
+  "leaders": [
+    {
+      "name": "Akintobi Oluwabori",
+      "post": "CUC Student Chaplain",
+      "photo": "images/leaders/favor.jpg",
+      "duty": "Akintobi Oluwabori Favor serves as the Student Chaplain, providing spiritual leadership and overall coordination for the student chapel community. In this capacity, he oversees fellowship activities, ensures the effective functioning of chapel units, and supports student leaders in carrying out their responsibilities. He serves as a strategic bridge between the Chaplain and student leadership, ensuring that communication, direction, and the vision of the chapel are effectively conveyed and implemented. Through his leadership, he contributes to fostering unity, spiritual growth, accountability, and excellence among the student body."
+    },
+    {
+      "name": "Aderonmu Adeola",
+      "post": "Ass.Student Chaplain [ANNEX HOSTEL]",
+      "photo": "images/leaders/ade.jpg",
+      "duty": "sdsfdfsdsfsfsfsfsfsfsfsfsgsfsfsfadsf ASDASDADADADADVADADDSDSDDSXSDSDSDSD"
+    },
+    {
+      "name": "Student Name 3",
+      "post": "General Secretary",
+      "photo": "images/leaders/leader-3.jpg",
+      "duty": "Keeps the records and minutes of meetings, handles correspondence and circulates announcements."
+    },
+    {
+      "name": "Student Name 4",
+      "post": "Financial Secretary",
+      "photo": "images/leaders/leader-4.jpg",
+      "duty": "Keeps the chapel's student accounts, collects offerings and dues and reports on spending."
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+/* ==========================================================
+   CUC website: Student Leaders, Fellowship and Units pages
+   Loaded AFTER styles.css and animations.css.
+   Uses the colours from styles.css (--navy, --gold, ...).
+   ========================================================== */
+
+.pp-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 44px;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.pp-grid { display: grid; gap: 24px; }
+.leader-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.fellowship-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; }
+.unit-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+@keyframes ppIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+.pp-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: ppIn 0.7s cubic-bezier(0.22, 0.8, 0.24, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+  transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.24, 1), box-shadow 0.35s ease;
+}
+@media (hover: hover) {
+  .pp-card:hover { transform: translateY(-8px); box-shadow: 0 20px 44px rgba(20, 35, 75, 0.18); }
+}
+
+/* ---------- Pictures (initials show behind the photo, so a missing image still looks fine) ---------- */
+.pp-photo {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(150deg, var(--navy-dark), var(--navy) 55%, #2a3f7a);
+}
+.pp-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pp-initials {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+/* click-to-view */
+.is-zoomable img { cursor: zoom-in; }
+
+/* ---------- Student leader card ---------- */
+.leader-card { overflow: hidden; display: flex; flex-direction: column; }
+.leader-photo { aspect-ratio: 4 / 5; border-radius: 0; }
+.leader-photo .pp-initials { font-size: 4.5rem; }
+.leader-photo img { transition: transform 0.6s cubic-bezier(0.22, 0.8, 0.24, 1); }
+@media (hover: hover) { .leader-card:hover .leader-photo img { transform: scale(1.05); } }
+.leader-body { padding: 22px 24px 26px; text-align: center; border-top: 4px solid var(--gold); flex: 1; }
+.leader-post {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.leader-body h3 { margin-bottom: 10px; font-size: 1.6rem; }
+.leader-duty p { margin: 0 0 10px; color: var(--muted); font-size: 0.95rem; }
+.leader-duty p:last-child { margin-bottom: 0; }
+
+/* ---------- Fellowship card ---------- */
+.fellowship-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 28px 18px 24px;
+  border-top: 4px solid var(--gold);
+}
+.fellowship-photo {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 4px solid var(--gold);
+  margin-bottom: 16px;
+}
+.fellowship-photo .pp-initials { font-size: 2.4rem; }
+.fellowship-card h3 { font-size: 1.35rem; margin-bottom: 6px; }
+.fellowship-tagline { margin: 0 0 12px; color: var(--muted); font-size: 0.86rem; line-height: 1.45; }
+.fellowship-leader { margin: auto 0 16px; padding-top: 4px; font-weight: 600; color: var(--navy); font-size: 0.95rem; line-height: 1.35; }
+.fellowship-leader span {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+/* ---------- Unit card ---------- */
+.unit-card { overflow: hidden; display: flex; flex-direction: column; border-top: 4px solid var(--gold); }
+.unit-photo { aspect-ratio: 16 / 10; border-radius: 0; }
+.unit-photo .pp-initials { font-size: 3.6rem; }
+.unit-photo img { transition: transform 0.6s cubic-bezier(0.22, 0.8, 0.24, 1); }
+@media (hover: hover) { .unit-card:hover .unit-photo img { transform: scale(1.05); } }
+.unit-body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+.unit-body h3 { font-size: 1.55rem; margin-bottom: 8px; }
+.unit-intro { margin: 0 0 16px; color: var(--muted); font-size: 0.95rem; }
+.unit-leaders { list-style: none; margin: auto 0 18px; padding: 14px 0 0; border-top: 1px solid rgba(20, 35, 75, 0.1); display: grid; gap: 10px; font-weight: 600; color: var(--navy); }
+.unit-leaders span {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.unit-body .btn { align-self: flex-start; }
+
+/* ---------- Pop-up: profile ---------- */
+.pp-profile { display: flex; flex-direction: column; align-items: center; margin: 0 0 18px; text-align: center; }
+/* the whole picture, never cropped, with rounded corners */
+.pp-full { margin: 0 0 12px; max-width: 100%; }
+.pp-full img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 55vh;
+  margin: 0 auto;
+  border-radius: 18px;
+  border: 4px solid var(--gold);
+  box-shadow: 0 8px 22px rgba(20, 35, 75, 0.18);
+}
+.profile-initials {
+  width: 132px;
+  height: 132px;
+  border-radius: 18px;
+  border: 4px solid var(--gold);
+  margin-bottom: 12px;
+}
+.profile-initials .pp-initials { font-size: 2.8rem; }
+.pp-profile-role {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.modal-body .pp-person-name { margin: 0 0 4px; font-size: 1.6rem; }
+.modal-body .pp-sub {
+  margin: 20px 0 10px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.pp-duties { margin: 0 0 6px; padding-left: 20px; color: var(--muted); }
+.pp-duties li { margin-bottom: 6px; }
+.pp-person + .pp-person { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(20, 35, 75, 0.12); }
+.pp-person .pp-contacts { margin-bottom: 14px; }
+.pp-contacts { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.pp-contacts a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--alt);
+  color: var(--navy);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.pp-contacts a:hover, .pp-contacts a:focus-visible { background: var(--navy); color: var(--white); }
+.pp-c-label { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); }
+.pp-contacts a:hover .pp-c-label, .pp-contacts a:focus-visible .pp-c-label { color: var(--gold); }
+.pp-c-value { font-weight: 600; text-align: right; overflow-wrap: anywhere; }
+.pp-nocontact { color: var(--muted); }
+
+/* ---------- Click-to-view picture ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(8, 14, 34, 0.92);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.lightbox[hidden] { display: none; }
+.lightbox.show { opacity: 1; }
+.lightbox figure { margin: 0; max-width: 100%; text-align: center; }
+.lightbox img {
+  display: block;
+  max-width: min(94vw, 1100px);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.94);
+  transition: transform 0.3s cubic-bezier(0.22, 0.8, 0.24, 1);
+}
+.lightbox.show img { transform: none; }
+.lightbox figcaption { margin-top: 14px; color: #fff; font-weight: 600; letter-spacing: 0.04em; }
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+body.lightbox-open { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .lightbox, .lightbox img { transition: none; }
+}
+
+@media (max-width: 520px) {
+  .leader-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  .unit-grid { grid-template-columns: 1fr; }
+  .fellowship-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .fellowship-card { padding: 22px 12px 20px; }
+  .fellowship-photo { width: 92px; height: 92px; }
+}
+@media (max-width: 360px) {
+  .fellowship-grid { grid-template-columns: 1fr; }
+}

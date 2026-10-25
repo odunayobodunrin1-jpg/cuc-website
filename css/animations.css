@@ -1,0 +1,639 @@
+/* ==========================================================
+   CUC website: motion & interaction layer
+   Loaded AFTER styles.css, together with js/animations.js.
+   To switch all animation off, remove the two lines that load
+   animations.css and animations.js from the HTML pages.
+   ========================================================== */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --hero-ms: 6500ms; /* set from data/site.json (hero.interval) */
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes riseIn   { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes zoomIn   { from { opacity: 0; transform: translateY(20px) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn    { from { opacity: 0; transform: translateY(26px) scale(0.95); } to { opacity: 1; transform: none; } }
+@keyframes slideUp  { from { opacity: 0.6; transform: translateY(70%); } to { opacity: 1; transform: none; } }
+@keyframes menuIn   { from { opacity: 0; transform: translateY(-10px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes ripple   { from { transform: scale(0); opacity: 0.3; } to { transform: scale(4); opacity: 0; } }
+@keyframes dotfill  { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes gradShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes ringPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(201, 162, 74, 0.38); }
+  70%  { box-shadow: 0 0 0 20px rgba(201, 162, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 162, 74, 0); }
+}
+
+/* ---------- Hero: rotating banner ---------- */
+.hero { overflow: hidden; isolation: isolate; }
+.hero-slides { position: absolute; inset: 0; z-index: -1; }
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.1);
+  /* fade out first, then reset the zoom while invisible */
+  transition: opacity 1.4s ease, transform 0s linear 1.4s;
+  will-change: opacity, transform;
+  background: var(--fallback, linear-gradient(150deg, #0d1735, #14234b 55%, #2a3f7a));
+}
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1.4s ease, transform calc(var(--hero-ms) + 2600ms) linear;
+}
+.hero-slide-img { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 23, 53, 0.72), rgba(13, 23, 53, 0.5) 55%, rgba(13, 23, 53, 0.86));
+}
+
+/* Gradient looks shown until you add real photos */
+.hero-slide.v0 { --fallback: radial-gradient(circle at 78% 18%, rgba(201, 162, 74, 0.28), transparent 46%), linear-gradient(150deg, #0d1735, #14234b 55%, #2a3f7a); }
+.hero-slide.v1 { --fallback: radial-gradient(circle at 20% 80%, rgba(201, 162, 74, 0.26), transparent 48%), linear-gradient(150deg, #0b2a3a, #12405a 55%, #1d6177); }
+.hero-slide.v2 { --fallback: radial-gradient(circle at 80% 78%, rgba(201, 162, 74, 0.26), transparent 46%), linear-gradient(150deg, #2a1236, #3d1c57 55%, #5a2c7a); }
+.hero-slide.v3 { --fallback: radial-gradient(circle at 22% 20%, rgba(255, 220, 150, 0.30), transparent 46%), linear-gradient(150deg, #3a1d10, #5c2f16 55%, #8a5222); }
+
+.hero { padding-bottom: 178px; }
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+/* Text entrance on load + swap when the slide changes */
+.hero-text > * {
+  animation: riseIn 0.9s var(--ease-out) backwards;
+  transition: opacity 0.45s ease, transform 0.55s var(--ease-out);
+}
+.hero-text > :nth-child(1) { animation-delay: 0.15s; }
+.hero-text > :nth-child(2) { animation-delay: 0.3s; transition-delay: 0.05s; }
+.hero-text > :nth-child(3) { animation-delay: 0.45s; transition-delay: 0.1s; }
+.hero-actions { animation: riseIn 0.9s var(--ease-out) 0.65s backwards; }
+.hero-text.out > * { opacity: 0; transform: translateY(-12px); }
+.hero-text.pre > * { transition: none; opacity: 0; transform: translateY(18px); }
+
+/* keep the buttons from jumping when slide text changes length */
+.hero h1 { min-height: 3.36em; display: flex; align-items: center; justify-content: center; }
+.hero .lead { min-height: 3.3em; }
+
+.hero-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 92px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+}
+.hero-arrow, .hero-pause {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: rgba(13, 23, 53, 0.25);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 0.2s, transform 0.2s var(--ease-out), border-color 0.2s;
+}
+.hero-arrow svg, .hero-pause svg { width: 18px; height: 18px; }
+.hero-pause { width: 34px; height: 34px; margin-left: 8px; }
+.hero-pause svg { width: 14px; height: 14px; }
+.hero-arrow:active, .hero-pause:active { transform: scale(0.9); }
+.hero-pause .icon-play { display: none; }
+.hero-pause[aria-pressed="true"] .icon-play { display: block; }
+.hero-pause[aria-pressed="true"] .icon-pause { display: none; }
+@media (hover: hover) {
+  .hero-arrow:hover, .hero-pause:hover { background: var(--gold); border-color: var(--gold); color: var(--navy-dark); }
+}
+
+.hero-dots { display: flex; align-items: center; margin: 0 4px; }
+.hero-dot {
+  position: relative;
+  width: 28px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: width 0.4s var(--ease-out);
+}
+.hero-dot::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: width 0.4s var(--ease-out), margin 0.4s var(--ease-out), background 0.3s;
+}
+.hero-dot.active { width: 56px; }
+.hero-dot.active::before { width: 44px; margin-left: -22px; background: rgba(255, 255, 255, 0.3); }
+.hero-dot.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 10px;
+  margin: -5px 0 0 -22px;
+  border-radius: 99px;
+  background: var(--gold);
+  transform-origin: left center;
+  animation: dotfill var(--hero-ms) linear forwards;
+}
+.hero.is-paused .hero-dot.active::after { animation-play-state: paused; }
+.hero.no-auto .hero-dot.active::after { animation: none; }
+.hero-arrow:focus-visible, .hero-pause:focus-visible, .hero-dot:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* ---------- Floating nav: reacts to scrolling ---------- */
+.site-header { background: rgba(251, 250, 246, 0.96); transition: top 0.3s var(--ease-out), box-shadow 0.3s ease, background 0.3s ease; }
+.header-inner { transition: padding 0.3s var(--ease-out); }
+.brand-logo { transition: height 0.3s var(--ease-out); }
+body.is-scrolled .site-header { top: 8px; background: rgba(251, 250, 246, 0.97); box-shadow: 0 12px 36px rgba(13, 23, 53, 0.26); }
+body.is-scrolled .header-inner { padding-top: 6px; padding-bottom: 6px; }
+body.is-scrolled .brand-logo { height: 38px; }
+
+.nav a { position: relative; transition: color 0.2s, background 0.2s, transform 0.2s var(--ease-out); }
+.nav a:not(.give)::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+@media (hover: hover) {
+  .nav a:not(.give):not(.active):hover::after { transform: scaleX(1); }
+  .nav a.give:hover { transform: translateY(-2px); }
+}
+
+.menu-toggle { transition: background 0.2s, transform 0.2s; }
+.menu-toggle:active { transform: scale(0.92); }
+.menu-toggle.is-open { background: var(--navy); color: var(--gold); }
+.nav.open { transform-origin: top center; animation: menuIn 0.28s var(--ease-out); }
+.nav.open a { animation: riseIn 0.4s var(--ease-out) backwards; }
+.nav.open a:nth-child(1) { animation-delay: 0.03s; }
+.nav.open a:nth-child(2) { animation-delay: 0.06s; }
+.nav.open a:nth-child(3) { animation-delay: 0.09s; }
+.nav.open a:nth-child(4) { animation-delay: 0.12s; }
+.nav.open a:nth-child(5) { animation-delay: 0.15s; }
+.nav.open a:nth-child(6) { animation-delay: 0.18s; }
+.nav.open a:nth-child(7) { animation-delay: 0.21s; }
+
+/* ---------- Scroll progress + back-to-top ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 150;
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+  background: linear-gradient(90deg, var(--gold), #ecd08e);
+  pointer-events: none;
+}
+.to-top {
+  position: fixed;
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 90;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  box-shadow: 0 8px 24px rgba(13, 23, 53, 0.35);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(18px) scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.35s var(--ease-out), background 0.2s;
+}
+.to-top svg { width: 20px; height: 20px; }
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:active { transform: scale(0.9); }
+@media (hover: hover) { .to-top.show:hover { background: var(--gold); color: var(--navy-dark); transform: translateY(-3px); } }
+.to-top:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* ---------- Scroll reveal ---------- */
+.js-anim .reveal:not(.in) { opacity: 0; }
+.js-anim .reveal.in { animation: riseIn 0.85s var(--ease-out) backwards; }
+.js-anim .reveal-zoom.in { animation-name: zoomIn; }
+
+.js-anim .reveal-stagger:not(.in) > * { opacity: 0; }
+.js-anim .reveal-stagger.in > * { animation: riseIn 0.75s var(--ease-out) backwards; }
+.js-anim .reveal-stagger.in > :nth-child(2) { animation-delay: 0.09s; }
+.js-anim .reveal-stagger.in > :nth-child(3) { animation-delay: 0.18s; }
+.js-anim .reveal-stagger.in > :nth-child(4) { animation-delay: 0.27s; }
+.js-anim .reveal-stagger.in > :nth-child(5) { animation-delay: 0.36s; }
+.js-anim .reveal-stagger.in > :nth-child(6) { animation-delay: 0.45s; }
+.js-anim .reveal-stagger.in > :nth-child(n+7) { animation-delay: 0.54s; }
+
+/* Inner-page banners */
+.page-banner > * { animation: riseIn 0.9s var(--ease-out) backwards; }
+.page-banner > :nth-child(2) { animation-delay: 0.15s; }
+
+/* ---------- Hover and touch feedback ---------- */
+.pillar, .news-card, .event-card, .program-card, .vm-card, .stat, .coming-soon {
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease, background 0.3s;
+}
+.date-badge { transition: transform 0.35s var(--ease-out); }
+.pillar-link { transition: letter-spacing 0.25s, color 0.2s; }
+
+@media (hover: hover) {
+  .pillar:hover, .news-card:hover, .event-card:hover, .program-card:hover, .vm-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 44px rgba(20, 35, 75, 0.18);
+  }
+  .stat:hover { background: #fbf6e8; }
+  .event-card:hover .date-badge { transform: rotate(-5deg) scale(1.07); }
+  .pillar-link:hover { letter-spacing: 0.03em; }
+}
+@media (hover: none) {
+  .pillar:active, .news-card:active, .event-card:active, .program-card:active, .vm-card:active { transform: scale(0.985); }
+}
+
+.btn { position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+.btn:active { transform: scale(0.96); }
+@media (hover: hover) { .btn:hover { box-shadow: 0 10px 24px rgba(13, 23, 53, 0.28); } }
+.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.ripple { position: absolute; border-radius: 50%; background: currentColor; pointer-events: none; animation: ripple 0.65s ease-out forwards; }
+
+.stat-value { font-variant-numeric: tabular-nums; }
+.chaplain-photo { animation: ringPulse 4.5s ease-out infinite; }
+.page-banner { background-size: 170% 170%; animation: gradShift 16s ease-in-out infinite; }
+
+/* ---------- Pop-up window ---------- */
+.modal:not([hidden]) .modal-backdrop { animation: fadeIn 0.28s ease; }
+.modal:not([hidden]) .modal-box { animation: popIn 0.4s var(--ease-out); }
+.modal-close { transition: background 0.2s, transform 0.25s var(--ease-out); }
+@media (hover: hover) { .modal-close:hover { transform: rotate(90deg); } }
+
+/* Phones: the pop-up slides up from the bottom like a sheet */
+@media (max-width: 560px) {
+  .modal { place-items: end center; padding: 0; }
+  .modal-box { max-width: none; max-height: 90vh; border-radius: 28px 28px 0 0; }
+  .modal:not([hidden]) .modal-box { animation: slideUp 0.42s var(--ease-out); }
+  .hero-arrow { width: 36px; height: 36px; }
+  .hero-pause { width: 30px; height: 30px; margin-left: 4px; }
+  .hero-dot { width: 22px; }
+  .hero-dot.active { width: 50px; }
+  .hero-dot.active::before, .hero-dot.active::after { width: 38px; margin-left: -19px; }
+  .hero .lead { min-height: 4.95em; }
+  .to-top { right: 14px; width: 44px; height: 44px; }
+}
+
+/* ---------- Respect "reduce motion" settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+  .js-anim .reveal:not(.in), .js-anim .reveal-stagger:not(.in) > * { opacity: 1; }
+  .hero-slide { transform: none !important; }
+}
+
+@media print {
+  .js-anim .reveal:not(.in), .js-anim .reveal-stagger:not(.in) > * { opacity: 1; }
+  .scroll-progress, .to-top, .hero-controls { display: none; }
+}/* ==========================================================
+   CUC website: motion & interaction layer
+   Loaded AFTER styles.css, together with js/animations.js.
+   To switch all animation off, remove the two lines that load
+   animations.css and animations.js from the HTML pages.
+   ========================================================== */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --hero-ms: 6500ms; /* set from data/site.json (hero.interval) */
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes riseIn   { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes zoomIn   { from { opacity: 0; transform: translateY(20px) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn    { from { opacity: 0; transform: translateY(26px) scale(0.95); } to { opacity: 1; transform: none; } }
+@keyframes slideUp  { from { opacity: 0.6; transform: translateY(70%); } to { opacity: 1; transform: none; } }
+@keyframes menuIn   { from { opacity: 0; transform: translateY(-10px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes ripple   { from { transform: scale(0); opacity: 0.3; } to { transform: scale(4); opacity: 0; } }
+@keyframes dotfill  { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes gradShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes ringPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(201, 162, 74, 0.38); }
+  70%  { box-shadow: 0 0 0 20px rgba(201, 162, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 162, 74, 0); }
+}
+
+/* ---------- Hero: rotating banner ---------- */
+.hero { overflow: hidden; isolation: isolate; }
+.hero-slides { position: absolute; inset: 0; z-index: -1; }
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.1);
+  /* fade out first, then reset the zoom while invisible */
+  transition: opacity 1.4s ease, transform 0s linear 1.4s;
+  will-change: opacity, transform;
+  background: var(--fallback, linear-gradient(150deg, #0d1735, #14234b 55%, #2a3f7a));
+}
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1.4s ease, transform calc(var(--hero-ms) + 2600ms) linear;
+}
+.hero-slide-img { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 23, 53, 0.72), rgba(13, 23, 53, 0.5) 55%, rgba(13, 23, 53, 0.86));
+}
+
+/* Gradient looks shown until you add real photos */
+.hero-slide.v0 { --fallback: radial-gradient(circle at 78% 18%, rgba(201, 162, 74, 0.28), transparent 46%), linear-gradient(150deg, #0d1735, #14234b 55%, #2a3f7a); }
+.hero-slide.v1 { --fallback: radial-gradient(circle at 20% 80%, rgba(201, 162, 74, 0.26), transparent 48%), linear-gradient(150deg, #0b2a3a, #12405a 55%, #1d6177); }
+.hero-slide.v2 { --fallback: radial-gradient(circle at 80% 78%, rgba(201, 162, 74, 0.26), transparent 46%), linear-gradient(150deg, #2a1236, #3d1c57 55%, #5a2c7a); }
+.hero-slide.v3 { --fallback: radial-gradient(circle at 22% 20%, rgba(255, 220, 150, 0.30), transparent 46%), linear-gradient(150deg, #3a1d10, #5c2f16 55%, #8a5222); }
+
+.hero { padding-bottom: 178px; }
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+/* Text entrance on load + swap when the slide changes */
+.hero-text > * {
+  animation: riseIn 0.9s var(--ease-out) backwards;
+  transition: opacity 0.45s ease, transform 0.55s var(--ease-out);
+}
+.hero-text > :nth-child(1) { animation-delay: 0.15s; }
+.hero-text > :nth-child(2) { animation-delay: 0.3s; transition-delay: 0.05s; }
+.hero-text > :nth-child(3) { animation-delay: 0.45s; transition-delay: 0.1s; }
+.hero-actions { animation: riseIn 0.9s var(--ease-out) 0.65s backwards; }
+.hero-text.out > * { opacity: 0; transform: translateY(-12px); }
+.hero-text.pre > * { transition: none; opacity: 0; transform: translateY(18px); }
+
+/* keep the buttons from jumping when slide text changes length */
+.hero h1 { min-height: 3.36em; display: flex; align-items: center; justify-content: center; }
+.hero .lead { min-height: 3.3em; }
+
+.hero-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 92px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+}
+.hero-arrow, .hero-pause {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: rgba(13, 23, 53, 0.25);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 0.2s, transform 0.2s var(--ease-out), border-color 0.2s;
+}
+.hero-arrow svg, .hero-pause svg { width: 18px; height: 18px; }
+.hero-pause { width: 34px; height: 34px; margin-left: 8px; }
+.hero-pause svg { width: 14px; height: 14px; }
+.hero-arrow:active, .hero-pause:active { transform: scale(0.9); }
+.hero-pause .icon-play { display: none; }
+.hero-pause[aria-pressed="true"] .icon-play { display: block; }
+.hero-pause[aria-pressed="true"] .icon-pause { display: none; }
+@media (hover: hover) {
+  .hero-arrow:hover, .hero-pause:hover { background: var(--gold); border-color: var(--gold); color: var(--navy-dark); }
+}
+
+.hero-dots { display: flex; align-items: center; margin: 0 4px; }
+.hero-dot {
+  position: relative;
+  width: 28px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: width 0.4s var(--ease-out);
+}
+.hero-dot::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: width 0.4s var(--ease-out), margin 0.4s var(--ease-out), background 0.3s;
+}
+.hero-dot.active { width: 56px; }
+.hero-dot.active::before { width: 44px; margin-left: -22px; background: rgba(255, 255, 255, 0.3); }
+.hero-dot.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 10px;
+  margin: -5px 0 0 -22px;
+  border-radius: 99px;
+  background: var(--gold);
+  transform-origin: left center;
+  animation: dotfill var(--hero-ms) linear forwards;
+}
+.hero.is-paused .hero-dot.active::after { animation-play-state: paused; }
+.hero.no-auto .hero-dot.active::after { animation: none; }
+.hero-arrow:focus-visible, .hero-pause:focus-visible, .hero-dot:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* ---------- Floating nav: reacts to scrolling ---------- */
+.site-header { background: rgba(251, 250, 246, 0.96); transition: top 0.3s var(--ease-out), box-shadow 0.3s ease, background 0.3s ease; }
+.header-inner { transition: padding 0.3s var(--ease-out); }
+.brand-logo { transition: height 0.3s var(--ease-out); }
+body.is-scrolled .site-header { top: 8px; background: rgba(251, 250, 246, 0.97); box-shadow: 0 12px 36px rgba(13, 23, 53, 0.26); }
+body.is-scrolled .header-inner { padding-top: 6px; padding-bottom: 6px; }
+body.is-scrolled .brand-logo { height: 38px; }
+
+.nav a { position: relative; transition: color 0.2s, background 0.2s, transform 0.2s var(--ease-out); }
+.nav a:not(.give)::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+@media (hover: hover) {
+  .nav a:not(.give):not(.active):hover::after { transform: scaleX(1); }
+  .nav a.give:hover { transform: translateY(-2px); }
+}
+
+.menu-toggle { transition: background 0.2s, transform 0.2s; }
+.menu-toggle:active { transform: scale(0.92); }
+.menu-toggle.is-open { background: var(--navy); color: var(--gold); }
+.nav.open { transform-origin: top center; animation: menuIn 0.28s var(--ease-out); }
+.nav.open a { animation: riseIn 0.4s var(--ease-out) backwards; }
+.nav.open a:nth-child(1) { animation-delay: 0.03s; }
+.nav.open a:nth-child(2) { animation-delay: 0.06s; }
+.nav.open a:nth-child(3) { animation-delay: 0.09s; }
+.nav.open a:nth-child(4) { animation-delay: 0.12s; }
+.nav.open a:nth-child(5) { animation-delay: 0.15s; }
+.nav.open a:nth-child(6) { animation-delay: 0.18s; }
+.nav.open a:nth-child(7) { animation-delay: 0.21s; }
+
+/* ---------- Scroll progress + back-to-top ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 150;
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+  background: linear-gradient(90deg, var(--gold), #ecd08e);
+  pointer-events: none;
+}
+.to-top {
+  position: fixed;
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 90;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  box-shadow: 0 8px 24px rgba(13, 23, 53, 0.35);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(18px) scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.35s var(--ease-out), background 0.2s;
+}
+.to-top svg { width: 20px; height: 20px; }
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:active { transform: scale(0.9); }
+@media (hover: hover) { .to-top.show:hover { background: var(--gold); color: var(--navy-dark); transform: translateY(-3px); } }
+.to-top:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* ---------- Scroll reveal ---------- */
+.js-anim .reveal:not(.in) { opacity: 0; }
+.js-anim .reveal.in { animation: riseIn 0.85s var(--ease-out) backwards; }
+.js-anim .reveal-zoom.in { animation-name: zoomIn; }
+
+.js-anim .reveal-stagger:not(.in) > * { opacity: 0; }
+.js-anim .reveal-stagger.in > * { animation: riseIn 0.75s var(--ease-out) backwards; }
+.js-anim .reveal-stagger.in > :nth-child(2) { animation-delay: 0.09s; }
+.js-anim .reveal-stagger.in > :nth-child(3) { animation-delay: 0.18s; }
+.js-anim .reveal-stagger.in > :nth-child(4) { animation-delay: 0.27s; }
+.js-anim .reveal-stagger.in > :nth-child(5) { animation-delay: 0.36s; }
+.js-anim .reveal-stagger.in > :nth-child(6) { animation-delay: 0.45s; }
+.js-anim .reveal-stagger.in > :nth-child(n+7) { animation-delay: 0.54s; }
+
+/* Inner-page banners */
+.page-banner > * { animation: riseIn 0.9s var(--ease-out) backwards; }
+.page-banner > :nth-child(2) { animation-delay: 0.15s; }
+
+/* ---------- Hover and touch feedback ---------- */
+.pillar, .news-card, .event-card, .program-card, .vm-card, .stat, .coming-soon {
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease, background 0.3s;
+}
+.date-badge { transition: transform 0.35s var(--ease-out); }
+.pillar-link { transition: letter-spacing 0.25s, color 0.2s; }
+
+@media (hover: hover) {
+  .pillar:hover, .news-card:hover, .event-card:hover, .program-card:hover, .vm-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 44px rgba(20, 35, 75, 0.18);
+  }
+  .stat:hover { background: #fbf6e8; }
+  .event-card:hover .date-badge { transform: rotate(-5deg) scale(1.07); }
+  .pillar-link:hover { letter-spacing: 0.03em; }
+}
+@media (hover: none) {
+  .pillar:active, .news-card:active, .event-card:active, .program-card:active, .vm-card:active { transform: scale(0.985); }
+}
+
+.btn { position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+.btn:active { transform: scale(0.96); }
+@media (hover: hover) { .btn:hover { box-shadow: 0 10px 24px rgba(13, 23, 53, 0.28); } }
+.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.ripple { position: absolute; border-radius: 50%; background: currentColor; pointer-events: none; animation: ripple 0.65s ease-out forwards; }
+
+.stat-value { font-variant-numeric: tabular-nums; }
+.chaplain-photo { animation: ringPulse 4.5s ease-out infinite; }
+.page-banner { background-size: 170% 170%; animation: gradShift 16s ease-in-out infinite; }
+
+/* ---------- Pop-up window ---------- */
+.modal:not([hidden]) .modal-backdrop { animation: fadeIn 0.28s ease; }
+.modal:not([hidden]) .modal-box { animation: popIn 0.4s var(--ease-out); }
+.modal-close { transition: background 0.2s, transform 0.25s var(--ease-out); }
+@media (hover: hover) { .modal-close:hover { transform: rotate(90deg); } }
+
+/* Phones: the pop-up slides up from the bottom like a sheet */
+@media (max-width: 560px) {
+  .modal { place-items: end center; padding: 0; }
+  .modal-box { max-width: none; max-height: 90vh; border-radius: 28px 28px 0 0; }
+  .modal:not([hidden]) .modal-box { animation: slideUp 0.42s var(--ease-out); }
+  .hero-arrow { width: 36px; height: 36px; }
+  .hero-pause { width: 30px; height: 30px; margin-left: 4px; }
+  .hero-dot { width: 22px; }
+  .hero-dot.active { width: 50px; }
+  .hero-dot.active::before, .hero-dot.active::after { width: 38px; margin-left: -19px; }
+  .hero .lead { min-height: 4.95em; }
+  .to-top { right: 14px; width: 44px; height: 44px; }
+}
+
+/* ---------- Respect "reduce motion" settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+  .js-anim .reveal:not(.in), .js-anim .reveal-stagger:not(.in) > * { opacity: 1; }
+  .hero-slide { transform: none !important; }
+}
+
+@media print {
+  .js-anim .reveal:not(.in), .js-anim .reveal-stagger:not(.in) > * { opacity: 1; }
+  .scroll-progress, .to-top, .hero-controls { display: none; }
+}

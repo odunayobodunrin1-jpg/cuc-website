@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Give Online | Chrisland University Chapel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body data-page="give">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-banner">
+      <h1>Give Online</h1>
+      <p>Support the work of Chrisland University Chapel.</p>
+    </section>
+
+    <!-- Bible verse (edit in data/site.json -> give.verse) -->
+    <section class="verse-band" aria-label="Bible verse">
+      <div class="container">
+        <blockquote id="give-verse"></blockquote>
+        <cite id="give-verse-ref"></cite>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" id="give-eyebrow">Give with a cheerful heart</p>
+          <h2 id="give-heading">Our Bank Details</h2>
+          <p class="section-sub" id="give-intro"></p>
+        </div>
+        <div class="give-accounts" id="give-accounts"><p>Loading…</p></div>
+        <ul class="give-notes" id="give-notes"></ul>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

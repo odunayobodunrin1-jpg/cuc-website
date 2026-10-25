@@ -1,0 +1,272 @@
+{
+  "_readme": "EDIT THIS FILE to change the Units page. Each unit is one block between { }. name, image (path in images/units/), intro (what the unit is about), duties (list). leader = {name, title, photo, phone, whatsapp, email, bio}. Only 3 units have an assistant block; to give a unit an assistant, copy the assistant block from one that has it. To remove an assistant, delete the whole assistant block (and the comma before it). whatsapp = digits only with country code, e.g. 2348012345678. Missing pictures show initials instead. Each line must end with a comma except the last one in a block.",
+  "units": [
+    {
+      "name": "Choir",
+      "image": "images/units/unit-1.jpg",
+      "intro": "Leads the congregation in praise and worship through song.",
+      "duties": [
+        "Rehearse weekly and prepare songs for every service",
+        "Lead praise and worship during chapel services",
+        "Minister at special programmes and outreaches",
+        "Nurture singing talents among students"
+      ],
+      "leader": {
+        "name": "Olaoti Fiyinfoluwa ",
+        "title": "Choir Leader",
+        "photo": "images/units/unit-1-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      },
+      "assistant": {
+        "name": "Choir Assistant",
+        "title": "Assistant Leader",
+        "photo": "images/units/unit-1-assistant.jpg",
+        "phone": "+234 800 000 0001",
+        "whatsapp": "2348000000001",
+        "email": "",
+        "bio": "Write a short bio of the assistant here."
+      }
+    },
+    {
+      "name": "Instrumentalists",
+      "image": "images/units/unit-2.jpg",
+      "intro": "The band that backs worship with music and keeps the sound lively.",
+      "duties": [
+        "Provide music for services and programmes",
+        "Practise regularly with the choir",
+        "Train new students to play instruments",
+        "Care for the chapel's instruments"
+      ],
+      "leader": {
+        "name": "Instrumentalists Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-2-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    },
+    {
+      "name": "Ushering",
+      "image": "images/units/unit-3.jpg",
+      "intro": "The first smiling faces at the door: welcoming and seating everyone.",
+      "duties": [
+        "Welcome worshippers and seat them",
+        "Maintain order during services",
+        "Take attendance and count offerings with the finance team",
+        "Assist first-timers and visitors"
+      ],
+      "leader": {
+        "name": "Ushering Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-3-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      },
+      "assistant": {
+        "name": "Ushering Assistant",
+        "title": "Assistant Leader",
+        "photo": "images/units/unit-3-assistant.jpg",
+        "phone": "+234 800 000 0001",
+        "whatsapp": "2348000000001",
+        "email": "",
+        "bio": "Write a short bio of the assistant here."
+      }
+    },
+    {
+      "name": "Media & Technical",
+      "image": "images/units/unit-4.jpg",
+      "intro": "Handles sound, projection, photography and recording.",
+      "duties": [
+        "Operate sound, lights and projection",
+        "Record and share services and events",
+        "Take photos and design flyers",
+        "Maintain the chapel's technical equipment"
+      ],
+      "leader": {
+        "name": "Media & Technical Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-4-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      },
+      "assistant": {
+        "name": "Media & Technical Assistant",
+        "title": "Assistant Leader",
+        "photo": "images/units/unit-4-assistant.jpg",
+        "phone": "+234 800 000 0001",
+        "whatsapp": "2348000000001",
+        "email": "",
+        "bio": "Write a short bio of the assistant here."
+      }
+    },
+    {
+      "name": "Prayer",
+      "image": "images/units/unit-5.jpg",
+      "intro": "Keeps the chapel covered in prayer every day.",
+      "duties": [
+        "Lead prayer sessions before services",
+        "Organise prayer chains and vigils",
+        "Pray for students' needs and exams",
+        "Train members in the life of prayer"
+      ],
+      "leader": {
+        "name": "Prayer Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-5-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    },
+    {
+      "name": "Evangelism",
+      "image": "images/units/unit-6.jpg",
+      "intro": "Takes the gospel to hostels, classrooms and the community.",
+      "duties": [
+        "Plan outreaches on and off campus",
+        "Follow up new converts",
+        "Distribute tracts and invitations",
+        "Train students in personal evangelism"
+      ],
+      "leader": {
+        "name": "Evangelism Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-6-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    },
+    {
+      "name": "Welfare",
+      "image": "images/units/unit-7.jpg",
+      "intro": "Cares for students who are sick, in need or going through hard times.",
+      "duties": [
+        "Visit the sick and encourage them",
+        "Coordinate support for students in need",
+        "Mark special occasions with members",
+        "Work with the Chaplain on welfare cases"
+      ],
+      "leader": {
+        "name": "Welfare Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-7-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    },
+    {
+      "name": "Protocol",
+      "image": "images/units/unit-8.jpg",
+      "intro": "Looks after guests, ministers and the order of events.",
+      "duties": [
+        "Receive and host guest ministers",
+        "Arrange the order of programmes",
+        "Keep time during events",
+        "Work with ushers on special services"
+      ],
+      "leader": {
+        "name": "Protocol Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-8-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    },
+    {
+      "name": "Drama",
+      "image": "images/units/unit-9.jpg",
+      "intro": "Tells the gospel story through stage and creative arts.",
+      "duties": [
+        "Write and perform sketches",
+        "Prepare dramas for programmes and outreaches",
+        "Discover and train creative talents",
+        "Rehearse regularly"
+      ],
+      "leader": {
+        "name": "Drama Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-9-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    },
+    {
+      "name": "Decoration & Sanitation",
+      "image": "images/units/unit-10.jpg",
+      "intro": "Keeps the chapel clean, beautiful and ready for worship.",
+      "duties": [
+        "Clean and arrange the chapel before services",
+        "Decorate for special programmes",
+        "Manage cleaning materials",
+        "Organise sanitation duty rosters"
+      ],
+      "leader": {
+        "name": "Decoration & Sanitation Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-10-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    },
+    {
+      "name": "Sunday School",
+      "image": "images/units/unit-11.jpg",
+      "intro": "Teaches the Word in a simple, practical way for every student.",
+      "duties": [
+        "Prepare weekly Bible study lessons",
+        "Lead discussion and Q&A sessions",
+        "Provide study materials",
+        "Encourage regular attendance"
+      ],
+      "leader": {
+        "name": "Sunday School Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-11-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    },
+    {
+      "name": "Counselling",
+      "image": "images/units/unit-12.jpg",
+      "intro": "Offers a listening ear and godly guidance to students.",
+      "duties": [
+        "Offer confidential guidance and prayer",
+        "Refer serious cases to the Chaplain",
+        "Organise talks on relationships and academics",
+        "Follow up members who need support"
+      ],
+      "leader": {
+        "name": "Counselling Leader",
+        "title": "Unit Leader",
+        "photo": "images/units/unit-12-leader.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "",
+        "bio": "Write a short bio of the leader here."
+      }
+    }
+  ]
+}

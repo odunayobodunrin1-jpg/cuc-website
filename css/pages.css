@@ -1,0 +1,96 @@
+/* ==========================================================
+   CUC website: page banners (with pictures) + big-picture viewer
+   Loaded automatically by js/main.js on every page.
+   Banner pictures are set in data/site.json under "banners".
+   ========================================================== */
+
+/* ---------- Picture banners ---------- */
+.page-banner.has-photo {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: clamp(340px, 54vh, 540px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 150px 24px 90px;
+  background: linear-gradient(150deg, var(--navy-dark), var(--navy));
+  animation: none;
+}
+.page-banner-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: bannerDrift 14s ease-out both !important;
+}
+.page-banner-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 23, 53, 0.72), rgba(13, 23, 53, 0.5) 55%, rgba(13, 23, 53, 0.84));
+}
+.page-banner.has-photo h1,
+.page-banner.has-photo p { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45); }
+@keyframes bannerDrift { from { transform: scale(1.1); } to { transform: scale(1); } }
+
+/* ---------- Gallery: click a picture to view it ---------- */
+.gallery-item[data-i] { cursor: pointer; }
+.gallery-item[data-i]:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* the pop-up shows the whole picture (not cropped) */
+.modal-media.is-full {
+  height: auto;
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+  background: #0d1735;
+}
+.modal-media.is-full img {
+  width: 100%;
+  height: auto;
+  max-height: 62vh;
+  object-fit: contain;
+}
+
+/* ---------- Give page ---------- */
+.verse-band {
+  background: var(--alt);
+  border-bottom: 1px solid #eee8d8;
+  padding: 44px 0;
+  text-align: center;
+}
+.verse-band blockquote {
+  margin: 0 auto 12px;
+  max-width: 780px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--navy);
+}
+.verse-band cite { font-style: normal; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.85rem; color: var(--gold-dark); }
+
+.give-accounts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 880px; margin: 0 auto; }
+.account-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: var(--radius);
+  border-top: 4px solid var(--gold);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+.account-purpose { margin: 0 0 14px; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); }
+.account-card dl { margin: 0 0 14px; display: grid; gap: 12px; }
+.account-card dt { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark); }
+.account-card dd { margin: 2px 0 0; font-weight: 600; color: var(--navy); overflow-wrap: anywhere; }
+.account-number { font-size: 1.6rem; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+.account-note { margin: 0 0 18px; color: var(--muted); font-size: 0.92rem; flex: 1; }
+.account-card .btn { align-self: flex-start; }
+.give-notes { max-width: 880px; margin: 36px auto 0; padding-left: 22px; color: var(--muted); }
+.give-notes:empty { display: none; }
+.give-notes li { margin-bottom: 8px; }

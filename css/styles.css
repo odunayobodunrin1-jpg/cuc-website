@@ -1,0 +1,478 @@
+/* ==========================================================
+   Chrisland University Chapel (CUC): shared styles
+   Change the colors below to match the official CUC palette.
+   ========================================================== */
+:root {
+  --navy: #37144b;
+  --navy-dark: #350d33;
+  --gold: #c9a24a;
+  --gold-dark: #a8832e;
+  --ink: #1d2233;
+  --muted: #5c6477;
+  --paper: #fbfaf6;
+  --alt: #f1eee6;
+  --white: #ffffff;
+  --radius: 22px;
+  --shadow: 0 6px 24px rgba(20, 35, 75, 0.10);
+  --max: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.65;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--navy); }
+
+h1, h2, h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  line-height: 1.12;
+  margin: 0 0 0.5em;
+  color: var(--navy);
+}
+h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
+h3 { font-size: 1.55rem; }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section.alt { background: var(--alt); }
+.section-head { text-align: center; max-width: 680px; margin: 0 auto 44px; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+  margin: 0 0 10px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-gold { background: var(--gold); color: var(--navy-dark); }
+.btn-gold:hover { background: #d8b45f; }
+.btn-outline { border-color: var(--white); color: var(--white); background: transparent; }
+.btn-outline:hover { background: var(--white); color: var(--navy); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--navy-dark); }
+
+/* ---------- Header ---------- */
+/* Floating bar: stays pinned at the top while scrolling, over the page content */
+.site-header {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: min(var(--max), calc(100% - 28px));
+  background: rgba(251, 250, 246, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 162, 74, 0.35);
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(13, 23, 53, 0.18);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px 10px 26px;
+}
+.brand {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  line-height: 1.1;
+}
+.brand small {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.nav { display: flex; align-items: center; gap: 6px; }
+.nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+.nav a:hover { color: var(--gold-dark); }
+.nav a.active { color: var(--navy); background: var(--alt); }
+.nav a.give {
+  background: var(--gold);
+  color: var(--navy-dark);
+  margin-left: 6px;
+}
+.nav a.give:hover { background: #d8b45f; color: var(--navy-dark); }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #d8d1bf;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 6px 12px;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.brand-logo {
+  height: 60px;
+  width: 60px;          /* same as height, so it's a perfect circle */
+  object-fit: cover;    /* fills the circle without stretching the picture */
+  border-radius: 100%;   /* the circular mask */
+  border: 2px solid var(--gold);  /* optional gold ring; delete this line if you don't want it */
+  body.is-scrolled .brand-logo { width: 38px; }
+  @media (max-width: 520px) {
+  .brand-logo { height: 34px; width: 34px; }
+}
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 82vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--white);
+  padding: 120px 24px 140px;
+  /* Drop your chapel photo at images/banner.jpg. The gradient shows until then. */
+  background:
+    linear-gradient(180deg, rgba(13, 23, 53, 0.72), rgba(13, 23, 53, 0.55) 55%, rgba(13, 23, 53, 0.85)),
+    url("../images/banner.png") center / cover no-repeat,
+    linear-gradient(150deg, #0d1735, #14234b 55%, #2a3f7a);
+}
+.hero h1 {
+  color: var(--white);
+  font-size: clamp(2.8rem, 8vw, 5.4rem);
+  max-width: 14ch;
+  margin: 0 auto 18px;
+}
+.hero .eyebrow { color: var(--gold); }
+.hero .lead {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  max-width: 54ch;
+  margin: 0 auto 34px;
+  opacity: 0.95;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+/* ---------- Stats ---------- */
+.stats-wrap { margin-top: -70px; position: relative; z-index: 5; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.stat { padding: 30px 20px; text-align: center; border-right: 1px solid #eee8d8; }
+.stat:last-child { border-right: none; }
+.stat-value {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.stat-label {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Chaplain card ---------- */
+.chaplain-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--white);
+  border-radius: 36px;
+  box-shadow: var(--shadow);
+  padding: 36px 44px 36px 36px;
+  border: 1px solid #eee8d8;
+}
+.chaplain-photo {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid var(--gold);
+  background: linear-gradient(150deg, var(--navy), #2a3f7a);
+}
+.chaplain-photo.placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 5rem;
+  font-weight: 700;
+}
+.chaplain-body .role {
+  color: var(--gold-dark);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  margin: 0 0 6px;
+}
+.chaplain-body h2 { margin-bottom: 12px; }
+.chaplain-body p { color: var(--muted); margin: 0 0 22px; }
+
+/* ---------- Overview ---------- */
+.overview-intro { max-width: 760px; margin: 0 auto 40px; text-align: center; color: var(--muted); font-size: 1.1rem; }
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+.pillar {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--gold);
+}
+.pillar p { margin: 0; color: var(--muted); }
+
+/* ---------- Belonging panel ---------- */
+.panel {
+  background: linear-gradient(150deg, var(--navy-dark), var(--navy) 60%, #26397a);
+  color: var(--white);
+  border-radius: 44px;
+  padding: 64px 56px;
+  box-shadow: var(--shadow);
+}
+.panel h2 { color: var(--white); text-align: center; margin-bottom: 40px; }
+.panel-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
+.panel-item h3 { color: var(--gold); }
+.panel-item p { margin: 0; opacity: 0.9; }
+.conclusion {
+  margin: 48px auto 0;
+  max-width: 760px;
+  text-align: center;
+  padding-top: 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.conclusion blockquote {
+  margin: 0 0 12px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-style: italic;
+  line-height: 1.35;
+}
+.conclusion cite { font-style: normal; color: var(--gold); font-weight: 600; letter-spacing: 0.08em; font-size: 0.9rem; }
+
+/* ---------- Vision & Mission ---------- */
+.vm { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.vm-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+}
+.vm-card .eyebrow { margin-bottom: 4px; }
+.vm-card p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+
+/* ---------- News ---------- */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; }
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+.news-date { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 8px; }
+.news-card p { color: var(--muted); margin: 0 0 18px; flex: 1; }
+.news-card .read { font-weight: 600; text-decoration: none; color: var(--navy); }
+.news-card .read:hover { color: var(--gold-dark); }
+.center-action { text-align: center; margin-top: 36px; }
+
+/* ---------- Inner page banner ---------- */
+.page-banner {
+  background: linear-gradient(150deg, var(--navy-dark), var(--navy));
+  color: var(--white);
+  text-align: center;
+  padding: 140px 24px 80px;
+}
+.page-banner h1 { color: var(--white); font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: 10px; }
+.page-banner p { margin: 0 auto; max-width: 56ch; opacity: 0.9; }
+.coming-soon {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 2px dashed #d9cfae;
+  border-radius: var(--radius);
+  padding: 48px 32px;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--navy-dark); color: #d4d9e8; padding: 60px 0 0; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1.2fr; gap: 40px; }
+.site-footer h4 { color: var(--gold); margin: 0 0 14px; font-size: 0.85rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.site-footer a { color: #d4d9e8; text-decoration: none; }
+.site-footer a:hover { color: var(--gold); }
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin-bottom: 8px; }
+.footer-brand { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.7rem; color: var(--white); margin: 0 0 10px; }
+.footer-bottom { margin-top: 44px; padding: 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.12); text-align: center; font-size: 0.85rem; opacity: 0.8; }
+
+/* ---------- Logo beside the chapel name ---------- */
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo { height: 46px; width: auto; flex-shrink: 0; }
+.brand-text { display: block; }
+
+/* ---------- Small button + pillar link ---------- */
+.btn-small { padding: 9px 20px; font-size: 0.92rem; }
+.pillar-link { display: inline-block; margin-top: 14px; font-weight: 600; text-decoration: none; color: var(--navy); }
+.pillar-link:hover { color: var(--gold-dark); }
+button.btn { font-family: inherit; }
+
+/* ---------- Pop-up window ---------- */
+body.modal-open { overflow: hidden; }
+.modal { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; }
+.modal[hidden] { display: none; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(13, 23, 53, 0.68); backdrop-filter: blur(3px); }
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 86vh;
+  overflow: auto;
+  background: var(--white);
+  border-radius: 28px;
+  border-top: 6px solid var(--gold);
+  padding: 40px 42px 34px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--alt);
+  color: var(--navy);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-close:hover { background: var(--gold); }
+.modal-head { padding-right: 40px; }
+.modal-head .eyebrow { margin-bottom: 6px; }
+.modal-head h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); }
+.modal-body p { color: var(--muted); margin: 0 0 14px; }
+.modal-meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0 0 18px; font-weight: 600; color: var(--navy); }
+
+/* ---------- Events page ---------- */
+.event-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.event-card {
+  display: flex;
+  gap: 20px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+.date-badge {
+  flex-shrink: 0;
+  width: 74px;
+  height: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: var(--gold);
+  border-radius: 18px;
+}
+.date-badge .day { font-family: "Cormorant Garamond", Georgia, serif; font-size: 2.2rem; font-weight: 700; line-height: 1; }
+.date-badge .mon { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; font-weight: 600; }
+.event-body h3 { margin-bottom: 4px; }
+.event-meta { margin: 0 0 8px; font-size: 0.9rem; font-weight: 600; color: var(--gold-dark); }
+.event-body p { color: var(--muted); }
+.event-body p:not(.event-meta) { margin: 0 0 16px; }
+
+.program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+.program-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--gold);
+}
+.program-schedule { margin: 0 0 8px; font-weight: 600; color: var(--gold-dark); font-size: 0.92rem; }
+.program-card p:not(.program-schedule) { color: var(--muted); margin: 0 0 18px; flex: 1; }
+.program-card .btn { align-self: flex-start; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .menu-toggle { display: block; }
+  .nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--paper);
+    padding: 14px 18px 18px;
+    border: 1px solid #e5dfd0;
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(13, 23, 53, 0.18);
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 12px 14px; }
+  .nav a.give { margin: 8px 0 0; text-align: center; }
+  .chaplain-card { grid-template-columns: 1fr; text-align: center; padding: 32px 24px; }
+  .chaplain-photo { margin: 0 auto; width: 220px; height: 220px; }
+  .vm { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .panel { padding: 44px 26px; border-radius: 32px; }
+}
+@media (max-width: 520px) {
+  .brand { font-size: 1.2rem; }
+  .brand-logo { height: 34px; }
+  .stat { padding: 22px 6px; }
+  .stat-label { font-size: 0.7rem; letter-spacing: 0.05em; }
+  .event-card { flex-direction: column; }
+  .modal-box { padding: 34px 22px 26px; }
+  .section { padding: 56px 0; }
+  .hero { padding: 90px 20px 120px; }
+}

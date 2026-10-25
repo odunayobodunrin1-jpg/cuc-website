@@ -1,0 +1,145 @@
+{
+  "_readme": "EDIT THIS FILE to change the Fellowship page. Keep the commas and quotation marks. Each fellowship is one block between { }. Copy a whole block to add another one, or delete a block to remove one. photo = path to the leader's picture inside the images folder (put pictures in images/fellowships/). whatsapp must be digits only with country code, e.g. 2348012345678. Leave any field as \"\" if you do not have it and it will simply not show.",
+  "fellowships": [
+    {
+      "name": "GRACE Campus fellowship",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm ·",
+      "leader": {
+        "name": "Oyenekan Oluwanifemi",
+        "title": "Fellowship Leader",
+        "photo": "images/leaders/kendo.jpg",
+        "phone": "08060584445",
+        "whatsapp": "08060584445",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "MERCY Campus Fellowship",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Day · Time · Venue",
+      "leader": {
+        "name": "Aborisade Oluwadarasimi",
+        "title": "Fellowship Leader",
+        "photo": "images/fellowships/leader-2.jpg",
+        "phone": "08148549589",
+        "whatsapp": "08148549589",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "PEACE Campus Fellowship",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm·",
+      "leader": {
+        "name": "Adebesin Kofoworola",
+        "title": "Fellowship Leader",
+        "photo": "images/leaders/kofo.jpg",
+        "phone": "07089415182",
+        "whatsapp": "07089415182",
+        "email": "leader@exampFellowle.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "EXCELLENT Campus Fellowship",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm ·",
+      "leader": {
+        "name": "Adewale Phillip",
+        "title": "Fellowship Leader",
+        "photo": "images/fellowships/leader-4.jpg",
+        "phone": "07086438585",
+        "whatsapp": "07086438585",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "TRUTH Campus Fellowship",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm ·",
+      "leader": {
+        "name": "Fayemi Ajibola",
+        "title": "Fellowship Leader",
+        "photo": "images/leaders/aj.jpg",
+        "phone": "09136832621",
+        "whatsapp": "09136832621",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "LOVE Campus Fellowship",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm ·",
+      "leader": {
+        "name": "Dada Mofopefoluwa",
+        "title": "Fellowship Leader",
+        "photo": "images/leaders/fope.jpg",
+        "phone": "08025838409",
+        "whatsapp": "08025838409",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "FAVOUR Campus Fellowship",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm ·",
+      "leader": {
+        "name": "Ojekunle Daniel",
+        "title": "Fellowship Leader",
+        "photo": "images/fellowships/leader-7.jpg",
+        "phone": "08067475491",
+        "whatsapp": "08067475491",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "Fellowship 8 (replace with name)",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm ·",
+      "leader": {
+        "name": "Leader Name 8",
+        "title": "Fellowship Leader",
+        "photo": "images/fellowships/leader-8.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "Fellowship 9 (replace with name)",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm ·",
+      "leader": {
+        "name": "Leader Name 9",
+        "title": "Fellowship Leader",
+        "photo": "images/fellowships/leader-9.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    },
+    {
+      "name": "Fellowship 10 (replace with name)",
+      "tagline": "Raising a generation for christ.",
+      "meets": "Friday · 5:00pm ·",
+      "leader": {
+        "name": "Leader Name 10",
+        "title": "Fellowship Leader",
+        "photo": "images/fellowships/leader-10.jpg",
+        "phone": "+234 800 000 0000",
+        "whatsapp": "2348000000000",
+        "email": "leader@example.com",
+        "bio": "GOD LOVES YOU,AND SO DO I."
+      }
+    }
+  ]
+}

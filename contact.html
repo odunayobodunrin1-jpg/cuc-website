@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Chrisland University Chapel</title>
+  <meta name="description" content="Contact Chrisland University Chapel, find us on campus, or share your testimony.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/extras.css">
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-banner">
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you.</p>
+    </section>
+
+    <!-- Contact details + message form -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Get in touch</p>
+          <h2>Send Us a Message</h2>
+        </div>
+        <div class="contact-layout">
+          <div class="contact-info" id="contact-info"></div>
+
+          <form class="form-card" id="contact-form" novalidate>
+            <div class="field">
+              <label for="c-name">Full name</label>
+              <input id="c-name" name="name" type="text" required autocomplete="name">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="c-email">Email</label>
+                <input id="c-email" name="email" type="email" required autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="c-phone">Phone (optional)</label>
+                <input id="c-phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+            </div>
+            <div class="field">
+              <label for="c-topic">What is this about?</label>
+              <select id="c-topic" name="topic" required>
+                <option value="General enquiry">General enquiry</option>
+                <option value="Prayer request">Prayer request</option>
+                <option value="Counselling">Counselling</option>
+                <option value="Join a fellowship or unit">Join a fellowship or unit</option>
+                <option value="Events and programs">Events and programs</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="c-message">Message</label>
+              <textarea id="c-message" name="message" rows="5" required></textarea>
+            </div>
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-navy" type="submit">Send Message</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Share your testimony -->
+    <section class="section alt" id="testimony">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Give God the glory</p>
+          <h2>Share Your Testimony</h2>
+          <p class="section-sub">Has God done something in your life? Tell us. Your story can build someone else's faith.</p>
+        </div>
+        <form class="form-card testimony-card" id="testimony-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="t-name">Your name</label>
+              <input id="t-name" name="name" type="text" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="t-contact">Email or phone (optional)</label>
+              <input id="t-contact" name="contact" type="text">
+            </div>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="anonymous" value="yes">
+            <span>I would like to remain anonymous</span>
+          </label>
+          <div class="field">
+            <label for="t-category">Testimony category</label>
+            <select id="t-category" name="category">
+              <option value="Salvation">Salvation</option>
+              <option value="Healing">Healing</option>
+              <option value="Provision">Provision</option>
+              <option value="Academic breakthrough">Academic breakthrough</option>
+              <option value="Protection">Protection</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="t-text">Your testimony</label>
+            <textarea id="t-text" name="testimony" rows="7" required placeholder="Tell us what God has done..."></textarea>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="consent" value="yes">
+            <span>I give Chrisland University Chapel permission to share my testimony (it may be edited for length).</span>
+          </label>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-gold" type="submit">Share My Testimony</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Campus map -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Find us</p>
+          <h2>Campus Map</h2>
+        </div>
+        <div class="map-wrap" id="contact-map"></div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
