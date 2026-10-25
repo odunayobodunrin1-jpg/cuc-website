@@ -5,7 +5,7 @@
 # ==========================================================
 backend:
   name: github
-  repo: odunayobodun1-jpg/cuc-website
+  repo: odunayobodunrin1-jpg/cuc-website
   branch: main
 
 publish_mode: simple
