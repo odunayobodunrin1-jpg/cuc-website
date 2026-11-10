@@ -27,7 +27,7 @@
   },
   "banners": {
     "_readme": "Picture banner at the top of each page. Change the picture path to use your own photo (a wide landscape picture works best). Delete a line to give that page a plain banner. Student Leaders and Gallery are left out on purpose.",
-    "fellowship": "images/banners/fellowship.jpg",
+    "fellowship": "images/uploads/310530.jpg",
     "units": "images/banners/units.jpg",
     "events": "images/banners/events.jpg",
     "contact": "images/banners/contact.jpg",
